@@ -23,5 +23,5 @@
 hs_err_pid*
 
 # 过滤打包后的文件
-/out/
-/target/
+/out/*
+/target/*
