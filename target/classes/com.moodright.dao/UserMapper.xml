@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moodright.dao.UserMapper">
+
+    <!-- 添加用户 -->
+    <insert id="addUser" parameterType="User">
+        insert into `user`
+        (`username`,`nickname`,`password`,`create_time`)
+        values
+        (#{username}, #{nickname}, #{password}, #{create_time});
+    </insert>
+
+    <!-- 更新用户 -->
+    <update id="updateUser" parameterType="User">
+        update `user` set
+        `username` = #{username},
+        `nickname` = #{nickname},
+        `password` = #{password}
+        where `user_id` = #{user_id};
+    </update>
+
+    <!-- 根据id删除用户 -->
+    <delete id="deleteUserById" parameterType="_int">
+        delete from `user` where `user_id` = #{user_id}
+    </delete>
+
+    <!-- 根据id查询用户 -->
+    <select id="queryUserById" parameterType="_int" resultType="User">
+        select * from `user` where `user_id` = #{user_id}
+    </select>
+
+    <!-- 查询全部用户 -->
+    <select id="queryAllUser" resultType="User">
+        select * from `user`
+    </select>
+
+    <!-- 根据username查询用户 -->
+    <select id="queryUserByUsername" resultType="User">
+        select * from `user` where `username` = #{username}
+    </select>
+
+    <!-- 根据id更新头像 -->
+    <update id="updateAvartar" parameterType="User">
+        update `user` set
+        `avartar` = #{avartar}
+        where `user_id` = #{user_id}
+    </update>
+</mapper>
